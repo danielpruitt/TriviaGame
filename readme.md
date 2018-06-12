@@ -1,0 +1,2 @@
+Trivia Game
+The game is played by answering questions pertaining to the subject. Each correct and incorrect guess is logged and displayed for the player to view. A timer is started when the game is started allowing the player to know how much time they have to play the game.
