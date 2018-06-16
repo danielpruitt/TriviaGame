@@ -1,0 +1,12 @@
+body {
+    background:url(../images/background2.jpg);
+    background-size: cover;
+}
+
+.container {
+    background-color: #eeeeee
+}
+
+.jumbotron {
+    font-family: 'ABeeZee', sans-serif;
+}
