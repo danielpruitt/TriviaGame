@@ -1,55 +1,56 @@
 $(document).ready(function(){
 
     //questions and answers
-    var trivia = [{
-        question: "What college did Marshall, Lily, and Ted attend?",
+    var trivia = [
+        {question: "What college did Marshall, Lily, and Ted attend?",
         choices : ["Wesleyan","NYU", "Marquette","Columbia"],
         right : "Wesleyan"
-        },{
-        question: "What was the name of the bar Ted and Barney wanted to open?",
+        }, 
+        {question: "What was the name of the bar Ted and Barney wanted to open?",
         choices : ["Puzzles","Suits", "BarBar","Blitz"],
         right : "Puzzles"  
-        },{
-        question: "Why did Lily officially move into Marshall and Ted's apartment?",
+        },
+        {question: "Why did Lily officially move into Marshall and Ted's apartment?",
         choices : ["Lily lost her job","She didn't want to pay rent", "Her apartment became a Chinese restaurant","She came back from San Francisco"],
         right : "Her apartment became a Chinese restaurant",
-        },{
-        question: "What is Barney's job?",
+        },
+        {question: "What is Barney's job?",
         choices : ["Provide Legal Exculpation and Sign Everything","CEO of GNB", "Lawyer","It was never said"],
         right : "Provide Legal Exculpation and Sign Everything",
-        },{
-        question: "Where did Ted meet The Mother?",
+        },
+        {question: "Where did Ted meet The Mother?",
         choices : ["Farhampton Station","Marshall's wedding", "McLarens","Barney's Wedding"],
         right : "Farhampton Station",
-        },{
-        question: "Who voices old Ted?",
+        },
+        {question: "Who voices old Ted?",
         choices : ["Josh Radnor","Bob Saget", "David Schwimmer","John Stamos"],
         right : "Bob Saget",
-        }, {
-        question: "How many dogs did Robin have when she met Ted?",
-        choices : ["2","3", "5","0"],
-        right : "5",
-        },{
-        question: "Which of Ted's girlfriends actually lived in New Jersey?",
-        choices : ["Stella","Victoria", "Karen","Zoey"],
+        }, 
+        {question: "How many dogs did Robin have when she met Ted?",
+        choices : ["Two","Three","Five","None"],
+        right : "Five",
+        },
+        {question: "Which of Ted's girlfriends actually lived in New Jersey?",
+        choices : ["Stella","Victoria","Karen","Zoey"],
         right : "Stella",
-        },{
-        question: "Why did Marshall where a fedora in his wedding photos?",
-        choices : ["He thought it made him cooler","The wedding had a 50s theme", "He shaved part of his head","He lost a bet to Barney"],
+        },
+        {question: "Why did Marshall where a fedora in his wedding photos?",
+        choices : ["He thought it made him cooler","The wedding had a 50s theme","He shaved part of his head","He lost a bet to Barney"],
         right : "He shaved part of his head",
         },{
         question: "What did Barney have to wear for a year because he lost a bet with Marshall?",
         choices : ["A green suit", "Anything but a suit", "A ducky tie", "A polka dot tie"],
         right : "A ducky tie",
-        }, {
-        question: "What is the Mother's name?",
-        choices : ["Virginia", "Vicky","Zoey", "Tracy"],
+        }, 
+        {question: "What is the Mother's name?",
+        choices : ["Virginia","Vicky","Zoey","Tracy"],
         right : "Tracy",
-        },{
-        question: "What was Ted's secret alias on his college radio show?",
+        },
+        {question: "What was Ted's secret alias on his college radio show?",
         choices : ["Doctor Strange", "Doctor Love","Doctor T", "Doctor X"],
         right : "Doctor X"
-        }];
+        }
+        ];
 
 
     //variables for form, button, etc.
@@ -116,11 +117,11 @@ $(document).ready(function(){
             $("#endGame").html("You tried, you really did...");
             $("#score").html("You got them all wrong");
         }
-        else if ((correct === 5) && (correct < 9 )) {
+        else if ((correct >= 5) && (correct <= 9 )) {
             $("#endGame").html("That's not too bad...but not great.");
             $("#score").html("You only got " + correct + " right but you missed " + incorrect);
         }
-        else if ((correct === 10) && (correct === 11 )) {
+        else if ((correct >= 10) && (correct <= 11 )) {
             $("#endGame").html("Legend..... Wait for it.... nope, not quite there yet");
             $("#score").html("You only got " + correct + " right but you missed " + incorrect);
         }
@@ -167,7 +168,10 @@ $(document).ready(function(){
             reset.show();
             endGame.show();
             score.show();
+            
+
             finish();
+        
         };
 
     });// end of load question and choices
@@ -178,16 +182,20 @@ $(document).ready(function(){
         start.show();
         endGame.hide();
         score.hide();
-        countdownTimer.hide();
+        gamePlay();
+        // countdownTimer.hide();
         correct = 0;
         incorrect = 0;
-        endGame();
+        finish();
     });
 
 
     postChoices.on("click", function() {
         userGuess = $('input[name=answer]:checked').val();
-        $("input:radio").change(function() {$('#submit').prop("disabled",false);});
+        $("input:radio").change(function() {$('#submit').prop("disabled",false);
+        // $("#showAnswer").html(trivia[index].right)
+        
+        });
     }); 
 
 }); //end doc ready

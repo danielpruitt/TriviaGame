@@ -11,6 +11,7 @@
         
 </head>
 <body>
+    
     <div>
         <header class="jumbotron text-center container">
             <h1>How I Met Your Mother</h1>
@@ -18,39 +19,43 @@
             <h5>Try to answer as many How I Met Your Mother trivia questions before the time runs out.</h5>
             <h5>The game begins when you hit start!</h5>
         </header>
-
-        <div class="container rounded">
-            <div class="row"></div>
+    </div>
+    <div class="container">
+        <div>
+            <div class="row align-content-center">
                 <button class=" col-md-12 btn btn-dark btn-lg btn-block text-center" id="button">Start Game!</button>
                 <div id="timer"></div>
             </div>
+        </div>
 
-            <div class="row">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center" >
+                <p id="questions"> </p>
+                <p id="score"> </p>
+                <p id="endGame"> </p>
+            </div>
+             <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-8 text-center" >
-                    <p id="questions"> </p>
-                    <p id="score"> </p>
-                    <p id="endGame"> </p>
+                <div class="col-md-8 text-center">
+                    <form id="choices"> 
+                        <input type="radio" name="answer" class="answer" id="rOne" value=><span id="choiceOne">text</span>
+                        <br>
+                        <input type="radio" name="answer" class="answer" id="rTwo" value=><span id="choiceTwo">text</span>
+                        <br>
+                        <input type="radio" name="answer" class="answer" id="rThree" value=><span id="choiceThree">text</span>
+                        <br>
+                        <input type="radio" name="answer" class="answer" id="rFour" value=><span id="choiceFour">text</span>                     
+                    </form>
                 </div>
+                
                 <div class="col-md-2"></div>
-            </div>
-
-            <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 text-center" >
-                        
-                        <form id="choices">
-                            <input type="radio" name="answer" class="answer" id="rOne" value=><span id="choiceOne">text</span>
-                            <br>
-                            <input type="radio" name="answer" class="answer" id="rTwo" value=><span id="choiceTwo">text</span>
-                            <br>
-                            <input type="radio" name="answer" class="answer" id="rThree" value=><span id="choiceThree">text</span>
-                            <br>
-                            <input type="radio" name="answer" class="answer" id="rFour" value=><span id="choiceFour">text</span>
-                        </form>
-                    </div>
-                    <div class="col-md-2"></div>
-            </div>
+        </div>
+        <div id="showAnswer" class="col-md-12"></div>
+        <div>
             <div class="row">
                 <button class="col-12-md btn btn-dark btn-lg btn-block" id="submit">Submit</button>
             </div>
@@ -58,12 +63,12 @@
                 <button class="col-12-md btn btn-dark btn-lg btn-block" id="reset">Reset</button>
             </div>
         </div>
-
+    </div>
         
 
 
 
-    </div>
+    
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

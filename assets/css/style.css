@@ -10,3 +10,7 @@ body {
 .jumbotron {
     font-family: 'ABeeZee', sans-serif;
 }
+
+.alignment{
+    align-content: center;
+}
