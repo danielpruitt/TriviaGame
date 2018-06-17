@@ -57,7 +57,7 @@ $(document).ready(function(){
     //variables for form, button, etc.
     var correct = 0;
     var incorrect = 0;
-    var timer;
+    var timer
     var timeOut;
     var start = $("#button");
     var submit = $("#submit").hide();
@@ -73,7 +73,7 @@ $(document).ready(function(){
     //on clicks
 
     function countdownTimer (){
-        timer= 16;
+        timer= 15;
         clearInterval(timeOut);
         timeOut = setInterval(decrement,1000);
     };
@@ -118,26 +118,26 @@ $(document).ready(function(){
     function finish (){
         if (correct === 0 ){
             $("#endGame").html("You tried, you really did...");
-            $("#score").html("You got them all wrong");
+            $("#score").html("You got them all wrong, that's 0 correct and  " + incorrect + " incorrect.");
             console.log(correct)
             console.log(incorrect)
         }
         else if ((correct >= 1) && (correct <= 6 )) {
             $("#endGame").html("That's not too bad...but not great.");
-            $("#score").html("You only got " + correct + " right but you missed " + incorrect);
+            $("#score").html("You only got " + correct + " right and you missed " + incorrect);
             console.log(correct)
             console.log(incorrect)
         }
         else if ((correct >= 7) && (correct <= 11 )) {
             $("#endGame").html("Legend..... Wait for it.... nope, not quite there yet");
-            $("#score").html("You only got " + correct + " right but you missed " + incorrect);
+            $("#score").html("You only got " + correct + " right and you missed " + incorrect);
             console.log(correct)
             console.log(incorrect)
         }
 
         else if (correct <= 12) {
             $("#endGame").html("Suit Up!");
-            $("#score").html("You only got " + correct + " . Perfect Score!");
+            $("#score").html("You got all " + correct + " . Perfect Score!");
             console.log(correct)
             console.log(incorrect)
 
@@ -158,13 +158,17 @@ $(document).ready(function(){
     })
 
 
+
     submit.on("click", function(){
         stopTimer();
+        
         if (userGuess === trivia[index].right){
             correct++;
+        //    alert("Correct!"); figure out a way to post for 1 sec
         }
         else if (userGuess != trivia[index].right){
             incorrect++;
+            // alert("The correct answer is " + trivia[index].right) figure out a way to post for 1 sec 
         }
         index++;
 

@@ -11,6 +11,8 @@ body {
     font-family: 'ABeeZee', sans-serif;
 }
 
-.alignment{
-    align-content: center;
+.timer {
+    font-family: 'Press Start 2P', cursive;
+    color:#32cd32;
+    text-shadow: 2px 2px 4px #86e686
 }
