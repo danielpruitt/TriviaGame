@@ -2,6 +2,10 @@ $(document).ready(function(){
 
     //questions and answers
     var trivia = [
+        {question: "Who voices old Ted?",
+        choices : ["Bob Saget","Josh Radnor", "David Schwimmer","John Stamos"],
+        right : "Bob Saget",
+        },
         {question: "What college did Marshall, Lily, and Ted attend?",
         choices : ["Wesleyan","NYU", "Marquette","Columbia"],
         right : "Wesleyan"
@@ -21,10 +25,6 @@ $(document).ready(function(){
         {question: "Where did Ted meet The Mother?",
         choices : ["Farhampton Station","Marshall's wedding", "McLarens","Barney's Wedding"],
         right : "Farhampton Station",
-        },
-        {question: "Who voices old Ted?",
-        choices : ["Josh Radnor","Bob Saget", "David Schwimmer","John Stamos"],
-        right : "Bob Saget",
         }, 
         {question: "How many dogs did Robin have when she met Ted?",
         choices : ["Two","Three","Five","None"],
@@ -37,7 +37,8 @@ $(document).ready(function(){
         {question: "Why did Marshall where a fedora in his wedding photos?",
         choices : ["He thought it made him cooler","The wedding had a 50s theme","He shaved part of his head","He lost a bet to Barney"],
         right : "He shaved part of his head",
-        },{
+        },
+        {
         question: "What did Barney have to wear for a year because he lost a bet with Marshall?",
         choices : ["A green suit", "Anything but a suit", "A ducky tie", "A polka dot tie"],
         right : "A ducky tie",
@@ -56,6 +57,7 @@ $(document).ready(function(){
     //variables for form, button, etc.
     var correct = 0;
     var incorrect = 0;
+    var timer;
     var timeOut;
     var start = $("#button");
     var submit = $("#submit").hide();
@@ -71,10 +73,11 @@ $(document).ready(function(){
     //on clicks
 
     function countdownTimer (){
-        timer= 15;
+        timer= 16;
         clearInterval(timeOut);
         timeOut = setInterval(decrement,1000);
     };
+
     function decrement(){
         timer--;
         $('#timer').html(timer);
@@ -113,22 +116,30 @@ $(document).ready(function(){
 
     //end game alerts
     function finish (){
-        if (correct < 4 ){
+        if (correct === 0 ){
             $("#endGame").html("You tried, you really did...");
             $("#score").html("You got them all wrong");
+            console.log(correct)
+            console.log(incorrect)
         }
-        else if ((correct >= 5) && (correct <= 9 )) {
+        else if ((correct >= 1) && (correct <= 6 )) {
             $("#endGame").html("That's not too bad...but not great.");
             $("#score").html("You only got " + correct + " right but you missed " + incorrect);
+            console.log(correct)
+            console.log(incorrect)
         }
-        else if ((correct >= 10) && (correct <= 11 )) {
+        else if ((correct >= 7) && (correct <= 11 )) {
             $("#endGame").html("Legend..... Wait for it.... nope, not quite there yet");
             $("#score").html("You only got " + correct + " right but you missed " + incorrect);
+            console.log(correct)
+            console.log(incorrect)
         }
 
-        else if (correct === 12) {
+        else if (correct <= 12) {
             $("#endGame").html("Suit Up!");
             $("#score").html("You only got " + correct + " . Perfect Score!");
+            console.log(correct)
+            console.log(incorrect)
 
         };
 
@@ -150,10 +161,10 @@ $(document).ready(function(){
     submit.on("click", function(){
         stopTimer();
         if (userGuess === trivia[index].right){
-            correct++
+            correct++;
         }
         else if (userGuess != trivia[index].right){
-            incorrect++
+            incorrect++;
         }
         index++;
 
@@ -168,8 +179,7 @@ $(document).ready(function(){
             reset.show();
             endGame.show();
             score.show();
-            
-
+            $("#timer").hide();
             finish();
         
         };
@@ -182,20 +192,17 @@ $(document).ready(function(){
         start.show();
         endGame.hide();
         score.hide();
-        gamePlay();
-        // countdownTimer.hide();
         correct = 0;
         incorrect = 0;
+        index = 0;
         finish();
+    
     });
 
 
     postChoices.on("click", function() {
         userGuess = $('input[name=answer]:checked').val();
-        $("input:radio").change(function() {$('#submit').prop("disabled",false);
-        // $("#showAnswer").html(trivia[index].right)
-        
-        });
+        $("input:radio").change(function() {$('#submit').prop("disabled",false);});
     }); 
 
 }); //end doc ready
