@@ -66,14 +66,16 @@ $(document).ready(function(){
     var postQuestions = $("#questions").hide();
     var endGame = $("#endGame").hide();
     var score = $("#score").hide();
+    var result = $("#result").hide();
     var index= 0;
     var userGuess = $("input[name=answer]:checked").val();
+    var popup;
 
         
     //on clicks
 
     function countdownTimer (){
-        timer= 15;
+        timer= 16;
         clearInterval(timeOut);
         timeOut = setInterval(decrement,1000);
     };
@@ -94,6 +96,8 @@ $(document).ready(function(){
     function stopTimer(){
         clearInterval(timeOut)
     };
+
+    
 
     
 
@@ -158,17 +162,39 @@ $(document).ready(function(){
     })
 
 
-
     submit.on("click", function(){
         stopTimer();
-        
+        function results(){
+                popup = setTimeout(function(){
+                    result.hide();
+                    postQuestions.show();
+                    postChoices.show();
+                },2000)
+        };
+        function stopResult() {
+            clearTimeout(popup)
+        };
+
         if (userGuess === trivia[index].right){
             correct++;
-        //    alert("Correct!"); figure out a way to post for 1 sec
+            result.show();
+            postQuestions.hide();
+            postChoices.hide();
+            result.html(trivia[index].right +" is correct! You got it right!");
+            results();
+            
+            
+        //    alert("Correct!"); figure out a way to post for 1.5 sec
         }
         else if (userGuess != trivia[index].right){
             incorrect++;
-            // alert("The correct answer is " + trivia[index].right) figure out a way to post for 1 sec 
+            result.show();
+            postQuestions.hide();
+            postChoices.hide();
+            result.html("You guessed wrong. The correct answer is " + trivia[index].right );
+            results();
+        
+            // alert("The correct answer is " + trivia[index].right) figure out a way to post for 1.5 sec 
         }
         index++;
 
@@ -177,8 +203,10 @@ $(document).ready(function(){
         }
         else if (index===trivia.length){
             stopTimer();
+            stopResult();
             postQuestions.hide();
             postChoices.hide();
+            result.hide()
             submit.hide();
             reset.show();
             endGame.show();
@@ -192,6 +220,7 @@ $(document).ready(function(){
 
     reset.on("click", function(){
         postQuestions.hide();
+        result.hide();
         reset.hide();
         start.show();
         endGame.hide();
