@@ -84,11 +84,18 @@ $(document).ready(function(){
         timer--;
         $('#timer').html(timer);
 
-        if ((timer === 0) && (index === 12)){
+        if ((timer === 0) && (index === 11)){
             stopTimer();
             incorrect++
-            alert("Out of time! The correct answer was " + trivia[index -1].right);
+            alert("Out of time! The correct answer was " + trivia[index].right);
             finish();
+            endGame.show();
+            score.show();
+            reset.show();
+            submit.hide();
+            postChoices.hide();
+            postQuestions.hide();
+            $("#timer").hide();
         } else if (timer === 0){
             stopTimer (); 
             index ++; 
@@ -108,18 +115,21 @@ $(document).ready(function(){
 
     //gamePlay function to put text on DOM
     function gamePlay(){
+        var idx = index === 12 ? 11 : index;
+        console.log("TRIVIA", trivia);
+        console.log("INDEX", index);
         countdownTimer();
         $("#submit").prop("disabled", true);
         $('.answer').prop('checked', false);
-        $("#questions").html(trivia[index].question);
-        $("#rOne").val(trivia[index].choices[0]);
-        $("#choiceOne").text(trivia[index].choices[0]);
-        $("#rtwo").val(trivia[index].choices[1]);
-        $("#choiceTwo").text(trivia[index].choices[1]);
-        $("#rThree").val(trivia[index].choices[2]);
-        $("#choiceThree").text(trivia[index].choices[2]);
-        $("#rFour").val(trivia[index].choices[3]);
-        $("#choiceFour").text(trivia[index].choices[3]);
+        $("#questions").html(trivia[idx].question);
+        $("#rOne").val(trivia[idx].choices[0]);
+        $("#choiceOne").text(trivia[idx].choices[0]);
+        $("#rtwo").val(trivia[idx].choices[1]);
+        $("#choiceTwo").text(trivia[idx].choices[1]);
+        $("#rThree").val(trivia[idx].choices[2]);
+        $("#choiceThree").text(trivia[idx].choices[2]);
+        $("#rFour").val(trivia[idx].choices[3]);
+        $("#choiceFour").text(trivia[idx].choices[3]);
 
     }; // end of gamePlay function
 
