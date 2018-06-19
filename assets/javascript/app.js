@@ -84,13 +84,18 @@ $(document).ready(function(){
         timer--;
         $('#timer').html(timer);
 
-        if(timer === 0){
-            stopTimer (); 
-            index ++;
+        if ((timer === 0) && (index === 12)){
+            stopTimer();
             incorrect++
+            alert("Out of time! The correct answer was " + trivia[index -1].right);
+            finish();
+        } else if (timer === 0){
+            stopTimer (); 
+            index ++; 
+            incorrect++
+            alert("Out of time! The correct answer was " + trivia[index -1].right);         
             gamePlay();
-            alert("Out of time!");
-        }
+        };
     };
 
     function stopTimer(){
@@ -127,7 +132,7 @@ $(document).ready(function(){
             console.log(incorrect)
         }
         else if ((correct >= 1) && (correct <= 6 )) {
-            $("#endGame").html("That's not too bad...but not great.");
+            $("#endGame").html("You should probably try again.");
             $("#score").html("You only got " + correct + " right and you missed " + incorrect);
             console.log(correct)
             console.log(incorrect)
@@ -160,7 +165,7 @@ $(document).ready(function(){
        countdownTimer();
        gamePlay(); 
     })
-
+    
 
     submit.on("click", function(){
         stopTimer();

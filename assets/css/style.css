@@ -9,6 +9,7 @@ body {
 
 .jumbotron {
     font-family: 'ABeeZee', sans-serif;
+    
 }
 
 .timer {
@@ -16,3 +17,11 @@ body {
     color:#32cd32;
     text-shadow: 2px 2px 4px #86e686
 }
+
+/* .dark{
+    background: #323332;
+}
+
+input, span, h3 {
+    color:#32cd32
+} */
