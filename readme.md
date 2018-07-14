@@ -1,5 +1,10 @@
-Trivia Game
-The game is played by answering questions pertaining to the subject. Each correct and incorrect guess is logged and displayed for the player to view. A timer is started when the game is started allowing the player to know how much time they have to play the game.
+#Trivia Game
+
+https://danielpruitt.github.io/TriviaGame/
+
+This trivia game is based of the show How I Met Your Mother. For each question, the user has 15 seconds to answer and submit. If the answer is correct a message is shown to let the user know, if the answer is incorrect the correct answer is displayed. Both of the messages are displayed for 2 seconds before moving on to the next question. If the user did not submit and answer in the 15 seconds, an alert happens letting the user know the time was up and what the correct answer was. This counts to their incorrect score. At the end of the game a message appears giving the user's score of correct and incorrect and the option to restart the game. 
+
+This purpose of this game was to utilize timers in the logic. 
 
 
 
